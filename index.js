@@ -6,7 +6,7 @@ const users = require('./controllers/routes/users');
 const auth = require('./controllers/routes/auth');
 const jobs = require('./controllers/routes/jobsOffer')
 connection()
-//express
+//comment
 const app = express();
 
 app.use(express.json());
