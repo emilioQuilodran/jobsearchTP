@@ -43,6 +43,17 @@ class JobOffers {
             console.log(error)
         }
     }
+
+    async getBySalaray(amount){
+        const offers = await OfferModel.find({salary: amount})
+        if(offers.length != 0){
+            return offers;
+        } else {
+            return {
+                msg: "no se encontraron elementos"
+            }
+        }
+    }
 }
 
 module.exports = JobOffers

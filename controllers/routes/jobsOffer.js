@@ -32,7 +32,10 @@ function jobsOffer(app){
         return res.json({msg: "oferta eliminada"})
     })
 
-
+    router.get('/by-salary/:amount', async(req, res) => {
+        const response = await jobOffers.getBySalaray(req.params.amount)
+        return res.json(response);
+    })
 }
 
 module.exports = jobsOffer
