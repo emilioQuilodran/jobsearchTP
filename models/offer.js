@@ -11,9 +11,11 @@ const offerSchema = new Schema({
     categories: [{
         type: String
     }],
-    applicants: [{
-        type: Object,
-    }],
+    applicants: [
+        {
+            type: Schema.ObjectId, ref: "User"
+        }
+    ],
     pais: {
         type: String
     }

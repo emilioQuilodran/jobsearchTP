@@ -1,4 +1,5 @@
 const UserModel = require('../models/user');
+const OfferModel = require('../models/offer');
 
 class Users {
     async getAll(){
@@ -52,6 +53,24 @@ class Users {
             return user // Objeto
         }catch(error){
             console.log(error)
+        }
+    }
+
+    async applyJob(id, data){
+        try {
+            const offerJob = await OfferModel.findById(id);
+            const user = await UserModel.find({email: data.email})
+            let idUser = user[0]._id.toString();
+
+            let applicants = offerJob.applicants;
+            applicants.push(idUser)
+            const response = await OfferModel.findByIdAndUpdate(id,offerJob,{new:true})
+           
+            return response;
+
+
+        } catch (error) {
+            console.log(error);
         }
     }
     
