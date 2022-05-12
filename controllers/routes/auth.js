@@ -1,8 +1,10 @@
 const express = require("express")
 const Auth = require("../../services/auth")
+const helmet = require("helmet");
 
 
 function auth(app){
+    app.use(helmet());
     const router = express.Router()
     const authServ = new Auth()
 

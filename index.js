@@ -1,6 +1,7 @@
 const express = require('express');
 const {port} = require('./config');
 const { connection } = require('./config/db');
+const cors = require('cors')
 
 const users = require('./controllers/routes/users');
 const auth = require('./controllers/routes/auth');
@@ -9,6 +10,7 @@ connection()
 //comment index
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 auth(app)
