@@ -7,7 +7,7 @@ const users = require('./controllers/routes/users');
 const auth = require('./controllers/routes/auth');
 const jobs = require('./controllers/routes/jobsOffer')
 connection()
-
+//comment index
 const app = express();
 
 app.use(cors());
@@ -20,3 +20,4 @@ jobs(app)
 app.listen(port, ()=> {
     console.log('server running on port ', port);
 });
+
