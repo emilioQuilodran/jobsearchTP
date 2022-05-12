@@ -4,7 +4,13 @@ const UserModel = require('../models/user');
 class JobOffers {
     async getAll(){
         try {
-            const offers = await OfferModel.find()
+            const offers = await OfferModel
+                                    .find({'applicants': { $not: { $size: 0 }}})
+                                    .populate({
+                                        path: 'applicants',
+                                        select: 'name email'
+                                    });
+
             return offers;
         } catch(error) {
             console.log(error);
