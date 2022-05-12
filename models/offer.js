@@ -1,3 +1,4 @@
+const { type } = require("express/lib/response");
 const {mongoose} = require("../config/db")
 
 const Schema = mongoose.Schema
@@ -5,8 +6,13 @@ const Schema = mongoose.Schema
 const offerSchema = new Schema({
     title: String,
     description: String,
+    publisher: String,
+    salary: Number,
     categories: [{
         type: String
+    }],
+    applicants: [{
+        type: Object,
     }],
     pais: {
         type: String
