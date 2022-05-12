@@ -1,4 +1,5 @@
 const OfferModel = require('../models/offer');
+const UserModel = require('../models/user');
 
 class JobOffers {
     async getAll(){

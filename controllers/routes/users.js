@@ -8,7 +8,6 @@ function users(app){
 
     app.use("/api/users",router)
 
-
     router.get('/', ...authValidation("employer-admin") , async (req, res) => {
         const users = await userServ.getAll();
         return res.json(users)
@@ -27,6 +26,11 @@ function users(app){
     router.delete("/:id", ...authValidation("employer-admin"),async (req,res)=>{
         const user = await userServ.delete(req.params.id)
         return res.json({msg: "usuario eliminado"})
+    })
+
+    router.put('/:id/apllyToJob', async (req, res) => {
+        const response = await userServ.applyJob(req.params.id, req.body)
+        return res.json({msg: 'Solicitud exitosa'})
     })
 }
 
