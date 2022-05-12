@@ -6,7 +6,7 @@ const Schema = mongoose.Schema
 const offerSchema = new Schema({
     title: String,
     description: String,
-    publisher: String,
+    publisherId: String,
     salary: Number,
     categories: [{
         type: String
