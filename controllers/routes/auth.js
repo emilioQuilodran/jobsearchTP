@@ -16,10 +16,13 @@ function auth(app){
     })
 
     router.post("/signup",async (req,res)=>{
-        console.log("signup service");
         const result = await authServ.signup(req.body)
-
         return res.status(result.error?400:200).json(result)
+    })
+
+    router.get('/is-token-expired', async (req, res) => {
+        const result = await authServ.isTokenExpired(req)
+        return res.status(result?400:200).json(result)
     })
 }
 

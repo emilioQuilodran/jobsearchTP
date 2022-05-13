@@ -32,7 +32,20 @@ class Auth{
         }
 
         return this.#getUserData(user)
+    }
 
+    async isTokenExpired(req , res){
+        const bearer = req.headers.authorization
+        let isExpired = false;
+        if ( bearer && bearer.startsWith('Bearer')){
+            const [,token] = bearer.split("Bearer ") 
+            if(token){
+                const decoded = jwt.verify(token,jwtSecret)
+                const exp = decoded.exp;
+                isExpired = exp ? false : true;
+                return isExpired;
+            }
+        }
     }
 
     #getUserData(user){
