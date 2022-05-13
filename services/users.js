@@ -63,12 +63,16 @@ class Users {
             let idUser = user[0]._id.toString();
 
             let applicants = offerJob.applicants;
+            let userApplied = applicants.includes(idUser)
+            if(userApplied){
+                return {
+                    error: true,
+                    msg: "alla estan aplicando dos veces"
+                }
+            }
             applicants.push(idUser)
             const response = await OfferModel.findByIdAndUpdate(id,offerJob,{new:true})
-           
             return response;
-
-
         } catch (error) {
             console.log(error);
         }

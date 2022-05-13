@@ -30,7 +30,10 @@ function users(app){
 
     router.put('/:id/apllyToJob', async (req, res) => {
         const response = await userServ.applyJob(req.params.id, req.body)
-        return res.json({msg: 'Solicitud exitosa'})
+        if(response.error){
+            return res.status(400).json(response)
+        }
+        return res.json(response)
     })
 }
 
